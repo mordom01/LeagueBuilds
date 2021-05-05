@@ -58,5 +58,7 @@ class MainActivity : AppCompatActivity() {
                 "Rune", "SkillPrio", "Items"))
             top1_imageView_main.context.startActivity(clickedChamp)
         }
+
+
     }
 }
