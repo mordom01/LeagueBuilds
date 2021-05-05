@@ -1,14 +1,21 @@
 package com.example.leaguebuilds
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    companion object  {
+        val EXTRA_CHAMPINFO = "champ"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         val logoImg = findViewById<ImageView>(R.id.logo_imageView_main)
         Picasso.get().load("https://i.ibb.co/JF09WxR/Banner.png").into(logoImg)
@@ -42,5 +49,14 @@ class MainActivity : AppCompatActivity() {
         Picasso.get().load("https://static.wikia.nocookie.net/leagueoflegends/images/a/ac/Blitzcrank_OriginalSquare.png/revision/latest/scale-to-width-down/42?cb=20150402215457").into(blitzcrankImg)
         val sorakaImg = findViewById<ImageView>(R.id.supp2_imageView_main)
         Picasso.get().load("https://static.wikia.nocookie.net/leagueoflegends/images/6/65/Soraka_OriginalSquare.png/revision/latest/scale-to-width-down/42?cb=20150402221143").into(sorakaImg)
+
+        top1_imageView_main.setOnClickListener {
+            val clickedChamp = Intent(top1_imageView_main.context, ChampionDetailActivity::class.java)
+            clickedChamp.putExtra(ChampionDetailActivity.EXTRA_CHAMPINFO, Champion("Aatrox",
+            "Lore", "https://static.wikia.nocookie.net/leagueoflegends/images/1/15/Aatrox_OriginalSquare.png/revision/latest/scale-to-width-down/42?cb=20180612203801", mutableListOf("PassiveName", "PassiveIcon", "PassiveVid"), mutableListOf("QName", "QIcon", "QVid"),
+                mutableListOf("WName", "WIcon", "WVid"), mutableListOf("EName", "EIcon", "EVid"), mutableListOf("RName", "RIcon", "RVid"),
+                "Rune", "SkillPrio", "Items"))
+            top1_imageView_main.context.startActivity(clickedChamp)
+        }
     }
 }
