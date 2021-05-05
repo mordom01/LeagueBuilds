@@ -1,5 +1,9 @@
 package com.example.leaguebuilds
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Champion(
     var champName : String,
     var champLore : String,
@@ -13,5 +17,4 @@ data class Champion(
     var champSkillPrio: String,
     var champItems: String
 
-) {
-}
+) : Parcelable
