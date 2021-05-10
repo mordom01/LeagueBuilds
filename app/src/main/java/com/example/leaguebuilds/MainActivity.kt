@@ -53,12 +53,14 @@ class MainActivity : AppCompatActivity() {
         top1_imageView_main.setOnClickListener {
             val clickedChamp = Intent(top1_imageView_main.context, ChampionDetailActivity::class.java)
             clickedChamp.putExtra(ChampionDetailActivity.EXTRA_CHAMPINFO, Champion("Aatrox",
-            "Lore", "https://static.wikia.nocookie.net/leagueoflegends/images/1/15/Aatrox_OriginalSquare.png/revision/latest/scale-to-width-down/42?cb=20180612203801", mutableListOf("PassiveName", "PassiveIcon", "PassiveVid"), mutableListOf("QName", "QIcon", "QVid"),
-                mutableListOf("WName", "WIcon", "WVid"), mutableListOf("EName", "EIcon", "EVid"), mutableListOf("RName", "RIcon", "RVid"),
+            "A fallen god-warrior who once threatened to destroy Runeterra, Aatrox and his kin were bound to ancient weapons and imprisoned for centuries.", "https://static.wikia.nocookie.net/leagueoflegends/images/1/15/Aatrox_OriginalSquare.png/revision/latest/scale-to-width-down/42?cb=20180612203801",
+                mutableListOf("Deathbringer Stance", "https://blitz-cdn.blitz.gg/blitz/lol/passive/Aatrox_Passive.webp", "https://blitz-cdn-videos.blitz.gg/tooltip_videos/Aatrox/P.webm"),
+                mutableListOf("The Darkin Blade", "https://blitz-cdn.blitz.gg/blitz/lol/spell/AatroxQ.webp", "https://blitz-cdn-videos.blitz.gg/tooltip_videos/Aatrox/Q.webm"),
+                mutableListOf("Infernal Chains", "https://blitz-cdn.blitz.gg/blitz/lol/spell/AatroxW.webp", "https://blitz-cdn-videos.blitz.gg/tooltip_videos/Aatrox/W.webm"),
+                mutableListOf("Umbral Dash", "https://blitz-cdn.blitz.gg/blitz/lol/spell/AatroxE.webp", "https://blitz-cdn-videos.blitz.gg/tooltip_videos/Aatrox/E.webm"),
+                mutableListOf("World Ender", "https://blitz-cdn.blitz.gg/blitz/lol/spell/AatroxR.webp", "https://blitz-cdn-videos.blitz.gg/tooltip_videos/Aatrox/R.webm"),
                 "Rune", "SkillPrio", "Items"))
             top1_imageView_main.context.startActivity(clickedChamp)
         }
-
-
     }
 }
