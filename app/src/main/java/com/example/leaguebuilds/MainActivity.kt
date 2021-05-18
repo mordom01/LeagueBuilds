@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
         top1_imageView_main.setOnClickListener {
             val clickedChamp = Intent(top1_imageView_main.context, ChampionDetailActivity::class.java)
-            clickedChamp.putExtra(ChampionDetailActivity.EXTRA_CHAMPINFO, Champion("Aatrox",
+                    clickedChamp.putExtra(ChampionDetailActivity.EXTRA_CHAMPINFO, Champion("Aatrox",
                 "Once honored defenders of Shurima against the Void, Aatrox and his brethren would eventually become an even greater threat to Runeterra, and were defeated only by cunning mortal sorcery. But after centuries of imprisonment, Aatrox was the first to find freedom once more, corrupting and transforming those foolish enough to try and wield the magical weapon that contained his essence. Now, with stolen flesh, he walks Runeterra in a brutal approximation of his previous form, seeking an apocalyptic and long overdue vengeance.",
                 "https://static.wikia.nocookie.net/leagueoflegends/images/1/15/Aatrox_OriginalSquare.png/revision/latest/scale-to-width-down/42?cb=20180612203801",
                 mutableListOf("Deathbringer Stance", "https://blitz-cdn.blitz.gg/blitz/lol/passive/Aatrox_Passive.webp", "https://blitz-cdn-videos.blitz.gg/tooltip_videos/Aatrox/P.webm"),

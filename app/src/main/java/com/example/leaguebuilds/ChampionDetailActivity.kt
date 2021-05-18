@@ -29,7 +29,14 @@ class ChampionDetailActivity : AppCompatActivity() {
 
         // champInfo has all the champion data that we hardcoded in MainActivity
         val champInfo = intent.getParcelableExtra<Champion>(EXTRA_CHAMPINFO)
-        Log.d("Create", "onCreate: " + champInfo)
+        Log.d("Create", "onCreate: $champInfo")
+
+        //Button to go to champion items
+        championDetail_button_items.setOnClickListener {
+            val intentChampInfo = Intent(championDetail_button_items.context, ChampionItemActivity::class.java)
+            intentChampInfo.putExtra(ChampionItemActivity.EXTRA_CHAMPINFO, intent)
+            startActivity(intentChampInfo)
+        }
 
         // The code below this will input all the champion info into the layout
         val champImage = findViewById<ImageView>(R.id.championDetail_imageView_champImage)
@@ -87,8 +94,5 @@ class ChampionDetailActivity : AppCompatActivity() {
         rVid.setOnClickListener{
             rVideo.start()
         }
-
-
-
     }
 }
