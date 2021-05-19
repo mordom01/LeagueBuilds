@@ -23,12 +23,14 @@ class ChampionItemActivity : AppCompatActivity() {
         val champInfo = intent.getParcelableExtra<Champion>(EXTRA_CHAMPINFO3)
         Log.d("Create3", "onCreate: $champInfo")
 
+        // Back button to go back to ChampionDetailActivity
         championItems_button_back.setOnClickListener {
             val intentChampInfo = Intent(championItems_button_back.context, ChampionDetailActivity::class.java)
             intentChampInfo.putExtra(ChampionDetailActivity.EXTRA_CHAMPINFO2, champInfo)
             startActivity(intentChampInfo)
         }
 
+        // Adds the images into imageViews
         val runes = findViewById<ImageView>(R.id.championItems_imageView_runes)
         Picasso.get().load(champInfo.champRune).into(runes)
         val skillPrio = findViewById<ImageView>(R.id.championItems_imageView_skills)
