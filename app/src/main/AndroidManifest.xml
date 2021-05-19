@@ -19,6 +19,9 @@
         </activity>
         <activity android:name=".ChampionDetailActivity">
         </activity>
+        <activity android:name=".ChampionItemActivity">
+        </activity>
+
     </application>
 
 </manifest>

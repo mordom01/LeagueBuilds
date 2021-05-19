@@ -1,0 +1,125 @@
+Index: app/src/main/java/com/example/leaguebuilds/ChampionDetailActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.leaguebuilds\r\n\r\nimport android.content.Intent\r\nimport android.os.Bundle\r\nimport android.util.Log\r\nimport android.widget.ImageView\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport com.squareup.picasso.Picasso\r\nimport kotlinx.android.synthetic.main.champion_detail_view.*\r\n\r\nclass ChampionDetailActivity : AppCompatActivity() {\r\n\r\n    companion object {\r\n        val EXTRA_CHAMPINFO = \"champ\"\r\n    }\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.champion_detail_view)\r\n\r\n        // Back button to go to MainActivity\r\n        championDetail_button_back.setOnClickListener {\r\n            startActivity(Intent(championDetail_button_back.context, MainActivity::class.java))\r\n        }\r\n\r\n        // champInfo has all the champion data that we hardcoded in MainActivity\r\n        val champInfo = intent.getParcelableExtra<Champion>(EXTRA_CHAMPINFO)\r\n        Log.d(\"Create\", \"onCreate: \" + champInfo)\r\n\r\n        // The code below this will input all the champion info into the layout\r\n        val champImage = findViewById<ImageView>(R.id.championDetail_imageView_champImage)\r\n        Picasso.get().load(champInfo.champIcon).into(champImage)\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/leaguebuilds/ChampionDetailActivity.kt	(revision d93a76a45a9e03eb76a1acd45a7d0d5a7b9b3688)
++++ app/src/main/java/com/example/leaguebuilds/ChampionDetailActivity.kt	(date 1620839278663)
+@@ -29,7 +29,7 @@
+ 
+         // The code below this will input all the champion info into the layout
+         val champImage = findViewById<ImageView>(R.id.championDetail_imageView_champImage)
+-        Picasso.get().load(champInfo.champIcon).into(champImage)
++        Picasso.get().load(champInfo?.champIcon).into(champImage)
+ 
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/java/com/example/leaguebuilds/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.leaguebuilds\r\n\r\nimport android.content.Intent\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport android.widget.ImageView\r\nimport com.squareup.picasso.Picasso\r\nimport kotlinx.android.synthetic.main.activity_main.*\r\n\r\nclass MainActivity : AppCompatActivity() {\r\n\r\n    companion object  {\r\n        val EXTRA_CHAMPINFO = \"champ\"\r\n    }\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_main)\r\n\r\n\r\n        val logoImg = findViewById<ImageView>(R.id.logo_imageView_main)\r\n        Picasso.get().load(\"https://i.ibb.co/JF09WxR/Banner.png\").into(logoImg)\r\n        val topImg = findViewById<ImageView>(R.id.topLogo_imageView_main)\r\n        Picasso.get().load(\"https://static.wikia.nocookie.net/leagueoflegends/images/e/ef/Top_icon.png/revision/latest?cb=20181117143602\").into(topImg)\r\n        val jungleImg = findViewById<ImageView>(R.id.jungleLogo_imageView_main)\r\n        Picasso.get().load(\"https://static.wikia.nocookie.net/leagueoflegends/images/1/1b/Jungle_icon.png/revision/latest?cb=20181117143559\").into(jungleImg)\r\n        val midImg = findViewById<ImageView>(R.id.midLogo_imageView_main)\r\n        Picasso.get().load(\"https://static.wikia.nocookie.net/leagueoflegends/images/9/98/Middle_icon.png/revision/latest?cb=20181117143644\").into(midImg)\r\n        val botImg = findViewById<ImageView>(R.id.botLogo_imageView_main)\r\n        Picasso.get().load(\"https://static.wikia.nocookie.net/leagueoflegends/images/9/97/Bottom_icon.png/revision/latest?cb=20181117143632\").into(botImg)\r\n        val suppImg = findViewById<ImageView>(R.id.suppLogo_imageView_main)\r\n        Picasso.get().load(\"https://emoji.gg/assets/emoji/Support.png\").into(suppImg)\r\n        val aatroxImg = findViewById<ImageView>(R.id.top1_imageView_main)\r\n        Picasso.get().load(\"https://static.wikia.nocookie.net/leagueoflegends/images/1/15/Aatrox_OriginalSquare.png/revision/latest/scale-to-width-down/42?cb=20180612203801\").into(aatroxImg)\r\n        val gnarImg = findViewById<ImageView>(R.id.top2_imageView_main)\r\n        Picasso.get().load(\"https://static.wikia.nocookie.net/leagueoflegends/images/2/2d/Gnar_OriginalSquare.png/revision/latest/scale-to-width-down/42?cb=20160526212623\").into(gnarImg)\r\n        val yiImg = findViewById<ImageView>(R.id.jungle1_imageView_main)\r\n        Picasso.get().load(\"https://static.wikia.nocookie.net/leagueoflegends/images/7/73/Master_Yi_OriginalSquare.png/revision/latest/scale-to-width-down/42?cb=20150402220630\").into(yiImg)\r\n        val rengarImg = findViewById<ImageView>(R.id.jungle2_imageView_main)\r\n        Picasso.get().load(\"https://static.wikia.nocookie.net/leagueoflegends/images/b/b3/Rengar_OriginalSquare.png/revision/latest/scale-to-width-down/42?cb=20150402220904\").into(rengarImg)\r\n        val zedImg = findViewById<ImageView>(R.id.mid1_imageView_main)\r\n        Picasso.get().load(\"https://static.wikia.nocookie.net/leagueoflegends/images/4/46/Zed_OriginalSquare.png/revision/latest/scale-to-width-down/42?cb=20160526214523\").into(zedImg)\r\n        val zoeImg = findViewById<ImageView>(R.id.mid2_imageView_main)\r\n        Picasso.get().load(\"https://static.wikia.nocookie.net/leagueoflegends/images/2/2c/Zoe_OriginalSquare.png/revision/latest/scale-to-width-down/42?cb=20171107215256\").into(zoeImg)\r\n        val ezrealImg = findViewById<ImageView>(R.id.bot1_imageView_main)\r\n        Picasso.get().load(\"https://static.wikia.nocookie.net/leagueoflegends/images/5/54/Ezreal_OriginalSquare.png/revision/latest/scale-to-width-down/42?cb=20150402220010\").into(ezrealImg)\r\n        val xayahImg = findViewById<ImageView>(R.id.bot2_imageView_main)\r\n        Picasso.get().load(\"https://static.wikia.nocookie.net/leagueoflegends/images/4/4e/Xayah_OriginalSquare.png/revision/latest/scale-to-width-down/42?cb=20170404193839\").into(xayahImg)\r\n        val blitzcrankImg = findViewById<ImageView>(R.id.supp1_imageView_main)\r\n        Picasso.get().load(\"https://static.wikia.nocookie.net/leagueoflegends/images/a/ac/Blitzcrank_OriginalSquare.png/revision/latest/scale-to-width-down/42?cb=20150402215457\").into(blitzcrankImg)\r\n        val sorakaImg = findViewById<ImageView>(R.id.supp2_imageView_main)\r\n        Picasso.get().load(\"https://static.wikia.nocookie.net/leagueoflegends/images/6/65/Soraka_OriginalSquare.png/revision/latest/scale-to-width-down/42?cb=20150402221143\").into(sorakaImg)\r\n\r\n        top1_imageView_main.setOnClickListener {\r\n            val clickedChamp = Intent(top1_imageView_main.context, ChampionDetailActivity::class.java)\r\n            clickedChamp.putExtra(ChampionDetailActivity.EXTRA_CHAMPINFO, Champion(\"Aatrox\",\r\n            \"Lore\", \"https://static.wikia.nocookie.net/leagueoflegends/images/1/15/Aatrox_OriginalSquare.png/revision/latest/scale-to-width-down/42?cb=20180612203801\", mutableListOf(\"PassiveName\", \"PassiveIcon\", \"PassiveVid\"), mutableListOf(\"QName\", \"QIcon\", \"QVid\"),\r\n                mutableListOf(\"WName\", \"WIcon\", \"WVid\"), mutableListOf(\"EName\", \"EIcon\", \"EVid\"), mutableListOf(\"RName\", \"RIcon\", \"RVid\"),\r\n                \"Rune\", \"SkillPrio\", \"Items\"))\r\n            top1_imageView_main.context.startActivity(clickedChamp)\r\n        }\r\n\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/leaguebuilds/MainActivity.kt	(revision d93a76a45a9e03eb76a1acd45a7d0d5a7b9b3688)
++++ app/src/main/java/com/example/leaguebuilds/MainActivity.kt	(date 1620839278676)
+@@ -8,10 +8,7 @@
+ import kotlinx.android.synthetic.main.activity_main.*
+ 
+ class MainActivity : AppCompatActivity() {
+-
+-    companion object  {
+-        val EXTRA_CHAMPINFO = "champ"
+-    }
++    
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+         setContentView(R.layout.activity_main)
+Index: build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\r\nbuildscript {\r\n    ext.kotlin_version = \"1.3.72\"\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n    }\r\n    dependencies {\r\n        classpath 'com.android.tools.build:gradle:4.1.2'\r\n        classpath \"org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version\"\r\n\r\n        // NOTE: Do not place your application dependencies here; they belong\r\n        // in the individual module build.gradle files\r\n    }\r\n}\r\n\r\nallprojects {\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n    }\r\n}\r\n\r\ntask clean(type: Delete) {\r\n    delete rootProject.buildDir\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build.gradle	(revision d93a76a45a9e03eb76a1acd45a7d0d5a7b9b3688)
++++ build.gradle	(date 1620839278725)
+@@ -6,7 +6,7 @@
+         jcenter()
+     }
+     dependencies {
+-        classpath 'com.android.tools.build:gradle:4.1.2'
++        classpath 'com.android.tools.build:gradle:4.2.0'
+         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+ 
+         // NOTE: Do not place your application dependencies here; they belong
+Index: .idea/runConfigurations.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"RunConfigurationProducerService\">\r\n    <option name=\"ignoredProducers\">\r\n      <set>\r\n        <option value=\"org.jetbrains.plugins.gradle.execution.test.runner.AllInPackageGradleConfigurationProducer\" />\r\n        <option value=\"org.jetbrains.plugins.gradle.execution.test.runner.TestClassGradleConfigurationProducer\" />\r\n        <option value=\"org.jetbrains.plugins.gradle.execution.test.runner.TestMethodGradleConfigurationProducer\" />\r\n      </set>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/runConfigurations.xml	(revision d93a76a45a9e03eb76a1acd45a7d0d5a7b9b3688)
++++ .idea/runConfigurations.xml	(date 1620839278688)
+@@ -3,6 +3,7 @@
+   <component name="RunConfigurationProducerService">
+     <option name="ignoredProducers">
+       <set>
++        <option value="com.android.tools.idea.compose.preview.runconfiguration.ComposePreviewRunConfigurationProducer" />
+         <option value="org.jetbrains.plugins.gradle.execution.test.runner.AllInPackageGradleConfigurationProducer" />
+         <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestClassGradleConfigurationProducer" />
+         <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestMethodGradleConfigurationProducer" />
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#Fri Apr 30 16:47:15 PDT 2021\r\ndistributionBase=GRADLE_USER_HOME\r\ndistributionPath=wrapper/dists\r\nzipStoreBase=GRADLE_USER_HOME\r\nzipStorePath=wrapper/dists\r\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-6.5-bin.zip\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1252
+===================================================================
+--- gradle/wrapper/gradle-wrapper.properties	(revision d93a76a45a9e03eb76a1acd45a7d0d5a7b9b3688)
++++ gradle/wrapper/gradle-wrapper.properties	(date 1620839278699)
+@@ -3,4 +3,4 @@
+ distributionPath=wrapper/dists
+ zipStoreBase=GRADLE_USER_HOME
+ zipStorePath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-6.5-bin.zip
++distributionUrl=https\://services.gradle.org/distributions/gradle-6.7.1-bin.zip
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_8\" default=\"true\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(revision d93a76a45a9e03eb76a1acd45a7d0d5a7b9b3688)
++++ .idea/misc.xml	(date 1620839278709)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"CompilerConfiguration\">\r\n    <bytecodeTargetLevel target=\"1.8\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/compiler.xml	(revision d93a76a45a9e03eb76a1acd45a7d0d5a7b9b3688)
++++ .idea/compiler.xml	(date 1620839278718)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="CompilerConfiguration">
+-    <bytecodeTargetLevel target="1.8" />
++    <bytecodeTargetLevel target="11" />
+   </component>
+ </project>
+\ No newline at end of file

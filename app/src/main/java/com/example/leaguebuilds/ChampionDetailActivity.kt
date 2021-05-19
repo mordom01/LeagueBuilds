@@ -1,27 +1,28 @@
 package com.example.leaguebuilds
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.ScrollView
 import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
-
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.champion_detail_view.*
 
 
 class ChampionDetailActivity : AppCompatActivity() {
 
     companion object {
-        val EXTRA_CHAMPINFO = "champ"
+        val EXTRA_CHAMPINFO2 = "champ"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.champion_detail_view)
+        championDetail_scrollView.fullScroll(ScrollView.FOCUS_UP)
 
         // Back button to go to MainActivity
         championDetail_button_back.setOnClickListener {
@@ -29,8 +30,15 @@ class ChampionDetailActivity : AppCompatActivity() {
         }
 
         // champInfo has all the champion data that we hardcoded in MainActivity
-        val champInfo = intent.getParcelableExtra<Champion>(EXTRA_CHAMPINFO)
-        Log.d("Create", "onCreate: " + champInfo)
+        val champInfo = intent.getParcelableExtra<Champion>(EXTRA_CHAMPINFO2)
+        Log.d("Create2", "onCreate: $champInfo")
+
+        //Button to go to champion items
+        championDetail_button_items.setOnClickListener {
+            val intentChampInfo = Intent(championDetail_button_items.context, ChampionItemActivity::class.java)
+            intentChampInfo.putExtra(ChampionItemActivity.EXTRA_CHAMPINFO3, champInfo)
+            startActivity(intentChampInfo)
+        }
 
         // The code below this will input all the champion info into the layout
         val champImage = findViewById<ImageView>(R.id.championDetail_imageView_champImage)
@@ -88,6 +96,5 @@ class ChampionDetailActivity : AppCompatActivity() {
         rVid.setOnClickListener{
             rVideo.start()
         }
-
     }
 }
