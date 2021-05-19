@@ -1,0 +1,49 @@
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"com.example.leaguebuilds\">\r\n\r\n    <uses-permission android:name=\"android.permission.INTERNET\"/>\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/AppTheme\">\r\n        <activity android:name=\".MainActivity\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n        <activity android:name=\".ChampionDetailActivity\">\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision 91006a9c5a32430a4400f29602878c9eba1deca3)
++++ app/src/main/AndroidManifest.xml	(date 1621373560450)
+@@ -19,6 +19,8 @@
+         </activity>
+         <activity android:name=".ChampionDetailActivity">
+         </activity>
++        <activity android:name=".ChampionItemActivity">
++        </activity>
+     </application>
+ 
+ </manifest>
+\ No newline at end of file
+Index: app/src/main/java/com/example/leaguebuilds/ChampionDetailActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.leaguebuilds\r\n\r\nimport android.content.Intent\r\nimport android.os.Bundle\r\nimport android.util.Log\r\nimport android.view.View\r\nimport android.widget.ImageView\r\nimport android.widget.VideoView\r\nimport androidx.appcompat.app.AppCompatActivity\r\n\r\nimport com.squareup.picasso.Picasso\r\nimport kotlinx.android.synthetic.main.champion_detail_view.*\r\n\r\n\r\nclass ChampionDetailActivity : AppCompatActivity() {\r\n\r\n    companion object {\r\n        val EXTRA_CHAMPINFO = \"champ\"\r\n    }\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.champion_detail_view)\r\n\r\n        // Back button to go to MainActivity\r\n        championDetail_button_back.setOnClickListener {\r\n            startActivity(Intent(championDetail_button_back.context, MainActivity::class.java))\r\n        }\r\n\r\n        // champInfo has all the champion data that we hardcoded in MainActivity\r\n        val champInfo = intent.getParcelableExtra<Champion>(EXTRA_CHAMPINFO)\r\n        Log.d(\"Create\", \"onCreate: $champInfo\")\r\n\r\n        //Button to go to champion items\r\n        championDetail_button_items.setOnClickListener {\r\n            val intentChampInfo = Intent(championDetail_button_items.context, ChampionItemActivity::class.java)\r\n            intentChampInfo.putExtra(ChampionItemActivity.EXTRA_CHAMPINFO, intent)\r\n            startActivity(intentChampInfo)\r\n        }\r\n\r\n        // The code below this will input all the champion info into the layout\r\n        val champImage = findViewById<ImageView>(R.id.championDetail_imageView_champImage)\r\n        Picasso.get().load(champInfo.champIcon).into(champImage)\r\n        val passiveImage = findViewById<ImageView>(R.id.championDetail_imageView_passive)\r\n        Picasso.get().load(champInfo.champPassive[1]).into(passiveImage)\r\n        val qImage = findViewById<ImageView>(R.id.championDetail_imageView_Q)\r\n        Picasso.get().load(champInfo.champQ[1]).into(qImage)\r\n        val wImage = findViewById<ImageView>(R.id.championDetail_imageView_W)\r\n        Picasso.get().load(champInfo.champW[1]).into(wImage)\r\n        val eImage = findViewById<ImageView>(R.id.championDetail_imageView_E)\r\n        Picasso.get().load(champInfo.champE[1]).into(eImage)\r\n        val rImage = findViewById<ImageView>(R.id.championDetail_imageView_R)\r\n        Picasso.get().load(champInfo.champR[1]).into(rImage)\r\n\r\n        championDetail_textView_champName.setText(champInfo.champName)\r\n        championDetail_textView_description.setText(champInfo.champLore)\r\n        championDetail_textView_passiveDesc.setText(champInfo.champPassive[0])\r\n        championDetail_textView_QDesc.setText(champInfo.champQ[0])\r\n        championDetail_textView_WDesc.setText(champInfo.champW[0])\r\n        championDetail_textView_EDesc.setText(champInfo.champE[0])\r\n        championDetail_textView_RDesc.setText(champInfo.champR[0])\r\n\r\n\r\n\r\n\r\n        //Loads video to show each ability\r\n        val passiveVideo = findViewById<View>(R.id.passiveVid) as VideoView\r\n        passiveVideo.setVideoPath(champInfo.champPassive[2])\r\n\r\n        val qVideo = findViewById<View>(R.id.qVid) as VideoView\r\n        qVideo.setVideoPath(champInfo.champQ[2])\r\n\r\n        val wVideo = findViewById<View>(R.id.wVid) as VideoView\r\n        wVideo.setVideoPath(champInfo.champW[2])\r\n\r\n        val eVideo = findViewById<View>(R.id.eVid) as VideoView\r\n        eVideo.setVideoPath(champInfo.champE[2])\r\n\r\n        val rVideo = findViewById<View>(R.id.rVid) as VideoView\r\n        rVideo.setVideoPath(champInfo.champR[2])\r\n\r\n        passiveVid.setOnClickListener{\r\n            passiveVideo.start()\r\n        }\r\n        qVid.setOnClickListener{\r\n            qVideo.start()\r\n        }\r\n        wVid.setOnClickListener{\r\n            wVideo.start()\r\n        }\r\n        eVid.setOnClickListener{\r\n            eVideo.start()\r\n        }\r\n        rVid.setOnClickListener{\r\n            rVideo.start()\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/leaguebuilds/ChampionDetailActivity.kt	(revision 91006a9c5a32430a4400f29602878c9eba1deca3)
++++ app/src/main/java/com/example/leaguebuilds/ChampionDetailActivity.kt	(date 1621444016196)
+@@ -7,7 +7,6 @@
+ import android.widget.ImageView
+ import android.widget.VideoView
+ import androidx.appcompat.app.AppCompatActivity
+-
+ import com.squareup.picasso.Picasso
+ import kotlinx.android.synthetic.main.champion_detail_view.*
+ 
+@@ -31,10 +30,11 @@
+         val champInfo = intent.getParcelableExtra<Champion>(EXTRA_CHAMPINFO)
+         Log.d("Create", "onCreate: $champInfo")
+ 
++
+         //Button to go to champion items
+         championDetail_button_items.setOnClickListener {
+             val intentChampInfo = Intent(championDetail_button_items.context, ChampionItemActivity::class.java)
+-            intentChampInfo.putExtra(ChampionItemActivity.EXTRA_CHAMPINFO, intent)
++            intentChampInfo.putExtra(ChampionItemActivity.EXTRA_CHAMPINFO, champInfo)
+             startActivity(intentChampInfo)
+         }
+ 
