@@ -9,6 +9,7 @@ import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
 
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.champion_detail_view.*
 
 
@@ -87,8 +88,6 @@ class ChampionDetailActivity : AppCompatActivity() {
         rVid.setOnClickListener{
             rVideo.start()
         }
-
-
 
     }
 }
